@@ -5,4 +5,17 @@ package com.tlglearning.tictactoe;
  */
 public class Grid {
 
+  //business Method
+  public void gridLayout() {
+    System.out.println("  |  | ");
+    System.out.println("---------");
+    System.out.println("  |  | ");
+    System.out.println("---------");
+    System.out.println("  |  | ");
+
+  }
+
+
 }
+
+
