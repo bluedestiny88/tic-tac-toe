@@ -1,5 +1,11 @@
 package com.tlglearning.tictactoe;
 
-public class Representation {
+/**
+ *  An inheritance class for the X and O
+ */
+public interface Representation {
+
+  public String print();
+
 
 }
