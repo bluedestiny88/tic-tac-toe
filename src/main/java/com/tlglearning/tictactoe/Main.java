@@ -20,6 +20,7 @@ public class Main {
   public static void main(String[] args) throws IOException {
     Grid grid1 = new Grid();
     grid1.gridLayout();
+    System.out.println("Welcome to tic-tac-toe");
 
     //  Lines 22 - 26 are for demonstration purposes only, will be replaced in further
     //  implementations
