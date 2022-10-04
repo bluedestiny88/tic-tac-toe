@@ -7,11 +7,15 @@ import java.util.List;
  *  This class prints out a 3 x 3 console representation of the Tic-Tac-Toe grid.
  */
 public class Grid {
-  private List<String> squares = new ArrayList<>();
+  private List<Integer> squares = new ArrayList<>();
+  private static final int GRID_SIZE = 9;
+
+
+
 
   public Grid() {
-    for(int i =0; i < 9; i++){
-      squares.add(" ");
+    for(int i =0; i < GRID_SIZE; i++){
+      squares.add(i+1);
 
     }
 
@@ -29,6 +33,8 @@ public class Grid {
 
 
   }
+
+
 
 
 }
