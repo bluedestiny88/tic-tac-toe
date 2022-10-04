@@ -15,6 +15,8 @@ import java.util.stream.IntStream;
  */
 public class Main {
 
+  private static final int LINE_TOTAL_WINS = 8;
+
   private static final int GRID_SIZE = 9;
 
   public static void main(String[] args) throws IOException {
@@ -52,8 +54,58 @@ public class Main {
     return userNumber;
   }
 
- 
+  /**
+   * This method checks to see if tic-tac-toe has a winner.
+   * @param table - a representation of the Grid layout.
+   */
+
+  public void checkWinner(Grid table) {
+    for (int i = 0; i < LINE_TOTAL_WINS; i++) {
+      String line = null;
+      switch (i + 1) {
+        case 1:
+          line = table.getGrid().get(7).toString() + table.getGrid().get(8).toString()
+              + table.getGrid().get(9).toString();
+          break;
+        case 2:
+          line = table.getGrid().get(4).toString() + table.getGrid().get(5).toString()
+              + table.getGrid().get(6).toString();
+          break;
+        case 3:
+          line = table.getGrid().get(1).toString() + table.getGrid().get(2).toString()
+              + table.getGrid().get(3).toString();
+          break;
+        case 4:
+          line = table.getGrid().get(1).toString() + table.getGrid().get(4).toString()
+              + table.getGrid().get(7).toString();
+          break;
+        case 5:
+          line = table.getGrid().get(2).toString() + table.getGrid().get(5).toString()
+              + table.getGrid().get(8).toString();
+          break;
+        case 6:
+          line = table.getGrid().get(3).toString() + table.getGrid().get(6).toString()
+              + table.getGrid().get(9).toString();
+          break;
+        case 7:
+          line = table.getGrid().get(1).toString() + table.getGrid().get(5).toString()
+              + table.getGrid().get(9).toString();
+          break;
+        case 8:
+          line = table.getGrid().get(3).toString() + table.getGrid().get(5).toString()
+              + table.getGrid().get(9).toString();
+          break;
+
+
+      }
+
+    }
+
+
   }
+
+
+}
 
 
 
