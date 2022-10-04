@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
@@ -22,7 +24,6 @@ public class Main {
   public static void main(String[] args) throws IOException {
     Grid grid1 = new Grid();
     grid1.gridLayout();
-    System.out.println("Welcome to tic-tac-toe");
 
     //  Lines 22 - 26 are for demonstration purposes only, will be replaced in further
     //  implementations
@@ -97,14 +98,36 @@ public class Main {
               + table.getGrid().get(9).toString();
           break;
 
+      }
+      if(line.equals("XXX")) {
+        System.out.println("X, You are the winner!");
+        break;
+      }
 
+       if(line.equals("OOO")) {
+        System.out.println("O, You are the winner!");
+        break;
       }
 
     }
 
-
   }
 
+
+  public void checkDraw(Grid table){
+    List<Integer> grid = table.getGrid();
+    boolean stillPlaying = false;
+    //so if every grid square is filled, then there is no winner, and will be determined a draw.
+    //goal is to check every square to see if each square is an X or an O, if so, we reach a draw.
+    //if it does not have an X or an O, then spaces can still be filled, the game continues. and don't kick rocks.
+    for(int i = 0; i < GRID_SIZE; i++){
+      if( !grid.get(i+1).equals("X")  && !grid.get(i+1).equals("O")){
+            stillPlaying = true;
+      }
+
+    }
+
+  }
 
 }
 
