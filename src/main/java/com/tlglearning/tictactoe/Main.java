@@ -15,13 +15,16 @@ import java.util.stream.IntStream;
  */
 public class Main {
 
+  private static final int GRID_SIZE = 9;
+
   public static void main(String[] args) throws IOException {
     Grid grid1 = new Grid();
     grid1.gridLayout();
+
     //  Lines 22 - 26 are for demonstration purposes only, will be replaced in further
     //  implementations
     Set<Integer> fakeSet = IntStream
-        .rangeClosed(1, 9)
+        .rangeClosed(1, GRID_SIZE)
         .boxed()
         .collect(Collectors.toCollection(TreeSet::new));
     enterKey(fakeSet);
@@ -48,4 +51,9 @@ public class Main {
     } while (true); //  doing 0 ends the
     return userNumber;
   }
-}
+
+ 
+  }
+
+
+

@@ -8,9 +8,13 @@ import java.util.List;
  */
 public class Grid {
   private List<String> squares = new ArrayList<>();
+  private static final int GRID_SIZE = 9;
+
+
+
 
   public Grid() {
-    for(int i =0; i < 9; i++){
+    for(int i =0; i < GRID_SIZE; i++){
       squares.add(" ");
 
     }
@@ -29,6 +33,8 @@ public class Grid {
 
 
   }
+
+
 
 
 }
