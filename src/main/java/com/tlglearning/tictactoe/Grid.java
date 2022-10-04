@@ -10,6 +10,9 @@ public class Grid {
   private List<Integer> squares = new ArrayList<>();
   private static final int GRID_SIZE = 9;
 
+  /**
+   *
+   */
   public Grid() {
     for(int i =0; i < GRID_SIZE; i++){
       squares.add(i+1);

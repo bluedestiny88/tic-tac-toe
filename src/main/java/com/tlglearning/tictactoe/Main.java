@@ -10,6 +10,7 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import org.w3c.dom.ls.LSOutput;
 
 /**
  * The focal point of where the game will run from and check to see if the game is finished using
@@ -18,7 +19,6 @@ import java.util.stream.IntStream;
 public class Main {
 
   private static final int LINE_TOTAL_WINS = 8;
-
   private static final int GRID_SIZE = 9;
 
   public static void main(String[] args) throws IOException {
@@ -35,10 +35,12 @@ public class Main {
 
   }
 
+
   public static int enterKey(Set<Integer> validSpaces) throws IOException {
     int userNumber = 0;
     Reader input = new InputStreamReader(System.in);
     BufferedReader buffer = new BufferedReader(input);
+
     do {
       System.out.printf("Please enter a space number %s: ",
           validSpaces); //  consider passing in a treeSet
@@ -50,7 +52,6 @@ public class Main {
         break;
       } catch (IllegalArgumentException e) {
         System.out.println("Sorry, that is not an available space!");
-
       }
     } while (true); //  doing 0 ends the
     return userNumber;
@@ -60,7 +61,6 @@ public class Main {
    * This method checks to see if tic-tac-toe has a winner.
    * @param table - a representation of the Grid layout.
    */
-
   public void checkWinner(Grid table) {
     for (int i = 0; i < LINE_TOTAL_WINS; i++) {
       String line = null;
@@ -97,38 +97,29 @@ public class Main {
           line = table.getGrid().get(3).toString() + table.getGrid().get(5).toString()
               + table.getGrid().get(9).toString();
           break;
-
       }
       if(line.equals("XXX")) {
         System.out.println("X, You are the winner!");
         break;
       }
-
        if(line.equals("OOO")) {
         System.out.println("O, You are the winner!");
         break;
       }
-
     }
-
   }
 
 
-  public void checkDraw(Grid table){
+  public boolean checkDraw(Grid table){
     List<Integer> grid = table.getGrid();
     boolean stillPlaying = false;
-    //so if every grid square is filled, then there is no winner, and will be determined a draw.
-    //goal is to check every square to see if each square is an X or an O, if so, we reach a draw.
-    //if it does not have an X or an O, then spaces can still be filled, the game continues. and don't kick rocks.
     for(int i = 0; i < GRID_SIZE; i++){
       if( !grid.get(i+1).equals("X")  && !grid.get(i+1).equals("O")){
             stillPlaying = true;
       }
-
     }
-
+    return stillPlaying;
   }
-
 }
 
 
