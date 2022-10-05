@@ -4,11 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.util.List;
 import java.util.Set;
-import java.util.TreeSet;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+
 
 /**
  * The focal point of where the game will run from and check to see if the game is finished using
@@ -16,9 +13,16 @@ import java.util.stream.IntStream;
  */
 public class Main {
 
+
   private static final int LINE_TOTAL_WINS = 8;
   private static final int GRID_SIZE = 9;
 
+
+  /**
+   * Execution of tic-tac-toe program.
+   * @param args         String command line arguments.
+   * @throws IOException If user doesn't provide valid input.
+   */
   public static void main(String[] args) throws IOException {
     Grid grid1 = new Grid();
     System.out.println("Welcome to Tic-Tac-Toe.");
@@ -26,6 +30,11 @@ public class Main {
     grid1.gridLayout();
   }
 
+  /**
+   * This method reflects the actions of the players playing the game.
+   * @param grid1         reflects the grid layout.
+   * @throws IOException  if the user provided number is invalid.
+   */
   private static void gameRunning(Grid grid1)
       throws IOException {
     boolean gameIsRunning = true;
@@ -55,7 +64,12 @@ public class Main {
     } while(gameIsRunning);
   }
 
-
+  /**
+   * implement sthe space being utilized by the player.
+   * @param validSpaces   spaces left over for users to use.
+   * @return             represents numbers utilized by a player.
+   * @throws IOException  if the user provided number is invalid.
+   */
   public static int enterKey(Set<Integer> validSpaces) throws IOException {
     int userNumber = 0;
     Reader input = new InputStreamReader(System.in);
@@ -78,7 +92,8 @@ public class Main {
 
   /**
    * This method checks to see if tic-tac-toe has a winner.
-   * @param table - a representation of the Grid layout.
+   * @param table    a representation of the Grid layout.
+   * @return          returns if there is a winner or not.
    */
   public static boolean checkWinner(Grid table) {
     boolean thereIsNoWinner = true;
@@ -132,6 +147,11 @@ public class Main {
     return thereIsNoWinner;
   }
 
+  /**
+   * This method checks to see if there's no winners, this is done by seeing if there are any numbers left in a set of integers.
+   * @param availableSpaces   check availability of spaces for the players.
+   * @return                   Returns true, if all spaces are being utilized.
+   */
   public static boolean checkDraw(Set<Integer> availableSpaces){
     boolean noMoreAvailableSpaces = false;
     if (availableSpaces.isEmpty())  {
