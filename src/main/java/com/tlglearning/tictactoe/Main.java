@@ -21,11 +21,16 @@ public class Main {
 
   public static void main(String[] args) throws IOException {
     Grid grid1 = new Grid();
+    System.out.println("Welcome to Tic-Tac-Toe.");
+    gameRunning(grid1);
+    grid1.gridLayout();
+  }
+
+  private static void gameRunning(Grid grid1)
+      throws IOException {
     boolean gameIsRunning = true;
     boolean isPlayerXsTurn = true;
-    //  Lines 22 - 26 are for demonstration purposes only, will be replaced in further
-    //  implementations
-    System.out.println("Welcome to Tic-Tac-Toe.");
+
     do {
       grid1.gridLayout();
       if (isPlayerXsTurn) {
@@ -48,7 +53,6 @@ public class Main {
       }
       isPlayerXsTurn = !isPlayerXsTurn;
     } while(gameIsRunning);
-    grid1.gridLayout();
   }
 
 
