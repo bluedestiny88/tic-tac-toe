@@ -23,7 +23,7 @@ public class Grid {
   private static final int GRID_SIZE = 9;
 
   /**
-   *
+   * Construct a grid object.
    */
   public Grid() {
     for(int i = 0; i < GRID_SIZE; i++){
@@ -32,22 +32,42 @@ public class Grid {
     }
   }
 
+  /**
+   * This method retrieves the grid Array list.
+   * @return The grid Array list.
+   */
   public List<String> getGrid() {
     return squares;
   }
 
+  /**
+   * This method retrieves available spaces in the grid.
+   * @return the set of integers of available squares.
+   */
   public Set<Integer> getAvailableSpaces()  {
     return availableSpaces;
   }
 
+  /**
+   * This method retrieves players information.
+   * @return player's class information.
+   */
   public Player getXPlayer()  {
     return player1;
   }
 
+  /**
+   * This method retrieves players information
+   * @return player's class information.
+   */
   public Player getOPlayer()  {
     return player2;
   }
 
+  /**
+   * This method removes unavailable spaces set of Integers.
+    * @param spaceToRemove the space that is to be removed from the set.
+   */
   public void setAvailableSpaces(int spaceToRemove)  {
     availableSpaces.remove(spaceToRemove);
     System.out.println(availableSpaces.toString());
