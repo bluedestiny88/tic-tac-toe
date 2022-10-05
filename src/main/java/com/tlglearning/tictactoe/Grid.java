@@ -50,6 +50,7 @@ public class Grid {
 
   public void setAvailableSpaces(int spaceToRemove)  {
     availableSpaces.remove(spaceToRemove);
+    System.out.println(availableSpaces.toString());
   }
 
   /**

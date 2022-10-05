@@ -30,21 +30,25 @@ public class Main {
       grid1.gridLayout();
       if (isPlayerXsTurn) {
         System.out.println(grid1.getXPlayer().getPlayerStart());  //  Print out "Player X, it is your turn: "
-        int chosenNum = enterKey(grid1.getAvailableSpaces()) - 1; //  Player to choose a square
-        grid1.getGrid().set(chosenNum, grid1.getXPlayer().getPlayer());
+        int chosenNum = enterKey(grid1.getAvailableSpaces()); //  Player to choose a square
+        grid1.getGrid().set(chosenNum - 1, grid1.getXPlayer().getPlayer());
         grid1.setAvailableSpaces(chosenNum);
       } else  {
         System.out.println(grid1.getOPlayer().getPlayerStart());  //  Print out "Player X, it is your turn: "
-        int chosenNum = enterKey(grid1.getAvailableSpaces()) - 1; //  Player to choose a square
-        grid1.getGrid().add(chosenNum, grid1.getOPlayer().getPlayer());
+        int chosenNum = enterKey(grid1.getAvailableSpaces()); //  Player to choose a square
+        grid1.getGrid().set(chosenNum - 1, grid1.getOPlayer().getPlayer());
         grid1.setAvailableSpaces(chosenNum);
       }
-      gameIsRunning = checkWinner(grid1);
-      gameIsRunning = checkDraw(grid1);
+      if (!checkWinner(grid1))  {
+        gameIsRunning = false;
+      }
+      if (checkDraw(grid1.getAvailableSpaces()))  {
+        gameIsRunning = false;
+        System.out.println("GAME IS A DRAW");
+      }
       isPlayerXsTurn = !isPlayerXsTurn;
     } while(gameIsRunning);
-    // enterKey(grid1.getAvailableSpaces());
-
+    grid1.gridLayout();
   }
 
 
@@ -73,66 +77,63 @@ public class Main {
    * @param table - a representation of the Grid layout.
    */
   public static boolean checkWinner(Grid table) {
-    boolean thereIsaWinner = false;
+    boolean thereIsNoWinner = true;
     for (int i = 0; i < LINE_TOTAL_WINS; i++) {
       String line = null;
       switch (i + 1) {
         case 1:
-          line = table.getGrid().get(7).toString() + table.getGrid().get(8).toString()
-              + table.getGrid().get(9).toString();
+          line = table.getGrid().get(6).toString() + table.getGrid().get(7).toString()
+              + table.getGrid().get(8).toString();
           break;
         case 2:
-          line = table.getGrid().get(4).toString() + table.getGrid().get(5).toString()
-              + table.getGrid().get(6).toString();
+          line = table.getGrid().get(3).toString() + table.getGrid().get(4).toString()
+              + table.getGrid().get(5).toString();
           break;
         case 3:
-          line = table.getGrid().get(1).toString() + table.getGrid().get(2).toString()
-              + table.getGrid().get(3).toString();
+          line = table.getGrid().get(0).toString() + table.getGrid().get(1).toString()
+              + table.getGrid().get(2).toString();
           break;
         case 4:
+          line = table.getGrid().get(0).toString() + table.getGrid().get(3).toString()
+              + table.getGrid().get(6).toString();
+          break;
+        case 5:
           line = table.getGrid().get(1).toString() + table.getGrid().get(4).toString()
               + table.getGrid().get(7).toString();
           break;
-        case 5:
+        case 6:
           line = table.getGrid().get(2).toString() + table.getGrid().get(5).toString()
               + table.getGrid().get(8).toString();
           break;
-        case 6:
-          line = table.getGrid().get(3).toString() + table.getGrid().get(6).toString()
-              + table.getGrid().get(9).toString();
-          break;
         case 7:
-          line = table.getGrid().get(1).toString() + table.getGrid().get(5).toString()
-              + table.getGrid().get(9).toString();
+          line = table.getGrid().get(0).toString() + table.getGrid().get(4).toString()
+              + table.getGrid().get(8).toString();
           break;
         case 8:
-          line = table.getGrid().get(3).toString() + table.getGrid().get(5).toString()
-              + table.getGrid().get(9).toString();
+          line = table.getGrid().get(2).toString() + table.getGrid().get(4).toString()
+              + table.getGrid().get(6).toString();
           break;
       }
       if(line.equals("XXX")) {
-        System.out.println("X, You are the winner!");
-        thereIsaWinner = true;
+        System.out.println("X, YOU ARE THE WINNER!");
+        thereIsNoWinner = false;
         break;
       }
        if(line.equals("OOO")) {
-        System.out.println("O, You are the winner!");
-        thereIsaWinner = true;
+        System.out.println("O, YOU ARE THE WINNER!");
+        thereIsNoWinner = false;
         break;
       }
     }
-    return thereIsaWinner;
+    return thereIsNoWinner;
   }
 
-  public static boolean checkDraw(Grid table){
-    List<String> grid = table.getGrid();
-    boolean stillPlaying = false;
-    for(int i = 0; i < GRID_SIZE; i++){
-      if( !grid.get(i+1).equals("X")  && !grid.get(i+1).equals("O")){
-            stillPlaying = true;
-      }
+  public static boolean checkDraw(Set<Integer> availableSpaces){
+    boolean noMoreAvailableSpaces = false;
+    if (availableSpaces.isEmpty())  {
+      noMoreAvailableSpaces = true;
     }
-    return stillPlaying;
+    return noMoreAvailableSpaces;
   }
 }
 
