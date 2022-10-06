@@ -13,10 +13,8 @@ import java.util.Set;
  */
 public class Main {
 
-
   private static final int LINE_TOTAL_WINS = 8;
   private static final int GRID_SIZE = 9;
-
 
   /**
    * Execution of tic-tac-toe program.
